@@ -14,17 +14,37 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+char    *ft_strchr(const char *s, int c)
+{
+    int i;
+    
+	i = 0;
+	if (!s)
+		return NULL;
+    while (s[i] != '\0')
+	{
+         if (s[i] == (char)c)
+             return ((char *)s + i);
+         i++;
+     }
+    if (s[i] == (char)c)
+	 	return ((char *)&s[i]);
+     return (NULL);
+}
+
 int	ft_strlen(const char *str)
 {
 	int	i;
 
 	i = 0;
+	if (!str)
+		return (0);
 	while (str[i] != '\0')
 		i++;
 	return (i);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	int		i;
 	int		j;
@@ -46,40 +66,61 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		s3[i] = s1[i];
 	while (s2[++j] != '\0')
 		s3[i + j] = s2[j];
-	s3[  ]
+	s3[ft_strlen(s1) + ft_strlen(s2)] = '\0';
 	free(s1);
 	return (s3);
 }
 
-char    *ft_strchr(const char *s, int c)
-{
-    int i;
-    
-	i = 0;
-    while (s[i] != '\0')
-	{
-         if (s[i] == (char)c)
-             return ((char *)s + i);
-         i++;
-     }
-     if (s[i] == (char)c)
-	 return ((char *)&s[i]);
-     return (NULL);
-}
-
-char *ft_ending(const char *s)
+char *ft_ending(char *s)
 {
 	int i;
-	char *extra;
+	char *cut;
 
-	while (s[i] = '\n')
-
-
-	while (s[i] != '\n')
+	i = 0;
+	if (!s[i])
+		return NULL;
+	while (s[i] != '\n' && s[i])
+		i++;
+	cut = malloc(sizeof(char) * (i + 2));
+	if (!cut)
+		return NULL;
+	i = 0;
+	while (s[i] != '\n' && s[i])
 	{
-		extra[i] = s[i];
+		cut[i] = s[i];
 		i++;
 	}
-	
-		
+	if (s[i] == '\n')
+	{
+		cut[i] = s[i];
+		i++;
+	}
+	cut[i] = '\0';
+	return(cut);
+}
+
+char *ft_extra(char *s)
+{
+	int i;
+	int j;
+	char *extra;
+
+	i = 0;
+	j = 0;
+	while (s[i] && s[i] != '\n')
+		i++;
+	if (!s[i])
+	{
+		free(s);
+		return NULL;
+	}
+	extra = malloc(sizeof(char) * (ft_strlen(s) - (i + 1)));
+	if (!extra)
+		return NULL;
+	i++;
+	while (s[i])
+		extra[j++] = s[i++];
+	extra[j] = '\0';
+	free(s);
+	return(extra);
 }
