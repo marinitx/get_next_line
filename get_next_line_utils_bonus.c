@@ -1,15 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhiguera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/26 13:56:48 by mhiguera          #+#    #+#             */
-/*   Updated: 2023/04/26 18:47:05 by mhiguera         ###   ########.fr       */
+/*   Created: 2023/04/26 19:28:15 by mhiguera          #+#    #+#             */
+/*   Updated: 2023/04/26 19:28:36 by mhiguera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "get_next_line.h"
+
+#include "get_next_line_bonus.h"
 
 char	*ft_strchr(const char *s, int c)
 {
